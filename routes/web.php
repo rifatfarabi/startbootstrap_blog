@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BackendController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +19,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('index');
 // });
 
-Route::get('/index',[BlogController::class,'index'])->name('index');
+Route::get('/',[BlogController::class,'index'])->name('index.main');
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin/dashboard', [BackendController::class, 'index'])->name('admin.dashoard');
